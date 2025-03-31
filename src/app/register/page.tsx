@@ -6,9 +6,9 @@ import { redirect } from "next/navigation";
 export default async function Regsiter() {
   const session = await getServerSession(options);
 
-  // if (!session) {
-  //   redirect("http://localhost:3000/api/auth/signin/google");
-  // }
+  if (session != null) {
+    redirect("/");
+  }
 
   return <RegisterM />;
 }

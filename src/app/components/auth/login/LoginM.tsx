@@ -68,7 +68,7 @@ const LoginM = () => {
                 className="underline text-[#15141B] text-sm"
                 href={"/register"}
               >
-                don't have an account?
+                Don&apos;t have an account?
               </Link>
             </div>
           </div>
