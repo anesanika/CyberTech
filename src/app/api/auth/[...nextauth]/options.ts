@@ -29,6 +29,8 @@ export const options: NextAuthOptions = {
             return {
               accessToken: data.access,
               refreshToken: data.refresh,
+              id: data.id,
+              username: credentials?.username,
             };
           }
 
