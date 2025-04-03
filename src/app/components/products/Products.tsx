@@ -18,7 +18,7 @@ export default function Products() {
         setLoading(true);
         const { data } = await db.get("/store/products/");
         setAllProducts(data);
-        setFilteredProducts(data); // Set filteredProducts initially
+        setFilteredProducts(data);
       } catch (error) {
         console.error("We Got Error", error);
       } finally {
