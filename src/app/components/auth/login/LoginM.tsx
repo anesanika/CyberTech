@@ -26,7 +26,7 @@ const LoginM = () => {
       setError("Invalid username or password");
     }
     setLoading(false);
-    redirect("/");
+    // redirect("/");
   };
 
   return (
