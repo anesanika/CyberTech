@@ -1,7 +1,6 @@
 import NextAuth from "next-auth";
 import { JWT } from "next-auth/jwt";
 
-// Extending the User and JWT types
 declare module "next-auth" {
   interface User {
     accessToken: string;

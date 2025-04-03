@@ -3,6 +3,7 @@ import { signIn } from "next-auth/react";
 import { useState } from "react";
 import Link from "next/link";
 import { redirect } from "next/navigation";
+import { FaGoogle } from "react-icons/fa";
 
 const LoginM = () => {
   const [username, setUsername] = useState("");
@@ -39,6 +40,14 @@ const LoginM = () => {
             className="mt-10 max-w-92 w-full flex flex-col gap-7"
             onSubmit={handleSubmit}
           >
+            <div className="flex w-full">
+              <button
+                onClick={() => signIn("google")}
+                className="p-3 bg rounded-full border border-amber-400 text-amber-500 text-2xl transition-all hover:bg-amber-400 hover:text-black cursor-pointer"
+              >
+                <FaGoogle />
+              </button>
+            </div>
             <input
               type="text"
               placeholder="Username"
@@ -65,7 +74,7 @@ const LoginM = () => {
           <div>
             <div>
               <Link
-                className="underline text-[#15141B] text-sm"
+                className="underline text-[#15141B] text-sm mt-3 block"
                 href={"/register"}
               >
                 Don&apos;t have an account?

@@ -20,7 +20,7 @@ export const options: NextAuthOptions = {
 
         try {
           // Sending credentials via POST method
-          const { data } = await db.post("/token/", {
+          const { data } = await db.post("/api/token/", {
             username: credentials?.username,
             password: credentials?.password,
           });
@@ -58,6 +58,6 @@ export const options: NextAuthOptions = {
   },
   secret: process.env.NEXTAUTH_SECRET as string,
   pages: {
-    signIn: "/login", // The login page route
+    signIn: "/login",
   },
 };
