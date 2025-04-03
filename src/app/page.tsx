@@ -6,11 +6,11 @@ export default async function Home() {
     const { data } = await db.get("/store/products/");
 
     return <Prodcuts product={data} />;
-  } catch (e) {
+  } catch {
     return (
       <main>
         <h1>Welcome to my app</h1>
-        <p>Sorry, we couldn't load the latest data.</p>
+        <p>Sorry we couldn&apos;t load the latest data</p>
       </main>
     );
   }
