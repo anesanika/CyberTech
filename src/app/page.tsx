@@ -1,4 +1,3 @@
-import { Suspense } from "react";
 import Prodcuts from "./components/products/Products";
 import db from "./req/axios";
 
