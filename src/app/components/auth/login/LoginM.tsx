@@ -2,7 +2,6 @@
 import { signIn } from "next-auth/react";
 import { useState } from "react";
 import Link from "next/link";
-import { redirect } from "next/navigation";
 import { FaGoogle } from "react-icons/fa";
 
 const LoginM = () => {
