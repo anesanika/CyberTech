@@ -23,7 +23,6 @@ export const Navbar = () => {
             >
               <IoIosFlash />
             </Link>
-            1
             <div className="flex relative items-center">
               <span className="pointer-events-none translate-x-6 font-[Ubuntu]">
                 <CiSearch />
