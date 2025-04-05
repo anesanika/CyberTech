@@ -13,7 +13,7 @@ export default function Categories() {
 
   useEffect(() => {
     const getAllCat = async () => {
-      const { data } = await db.get("/store/category/");
+      const { data } = await db.get("/store/category");
 
       setCategories(data);
     };
