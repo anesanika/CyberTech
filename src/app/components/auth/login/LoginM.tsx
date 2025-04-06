@@ -3,6 +3,7 @@ import { signIn } from "next-auth/react";
 import { useState } from "react";
 import Link from "next/link";
 import { FaGoogle } from "react-icons/fa";
+import { redirect } from "next/navigation";
 
 const LoginM = () => {
   const [username, setUsername] = useState("");
@@ -14,7 +15,6 @@ const LoginM = () => {
     e.preventDefault();
     setLoading(true);
     setError(null);
-
     const res = await signIn("credentials", {
       redirect: false,
       username,
@@ -23,9 +23,10 @@ const LoginM = () => {
 
     if (res?.error) {
       setError("Invalid username or password");
+    } else {
+      redirect("/");
     }
     setLoading(false);
-    // redirect("/");
   };
 
   return (

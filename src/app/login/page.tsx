@@ -6,6 +6,8 @@ import { getServerSession } from "next-auth";
 export default async function Login() {
   const session = await getServerSession(options);
 
+  console.log(session);
+
   if (session != null) {
     redirect("/");
   }

@@ -11,6 +11,8 @@ import Image from "next/image";
 export const Navbar = () => {
   const session = useSession();
 
+  console.log(session);
+
   return (
     <nav className="w-full p-1 bg-white fixed top-0 left-0">
       <div className="content">
@@ -45,18 +47,18 @@ export const Navbar = () => {
             </Link>
             {session.status === "authenticated" ? (
               <div className="flex items-center justify-center gap-5">
-                <Link
-                  href={"/settings"}
-                  className="w-12 h-12 relative inline-block rounded-full overflow-hidden border"
-                >
-                  <Image
-                    src={
-                      session.data.user?.image ||
-                      "https://static.vecteezy.com/system/resources/thumbnails/009/292/244/small/default-avatar-icon-of-social-media-user-vector.jpg"
-                    }
-                    fill
-                    alt="something"
-                  />
+                <Link href={"/settings"} className="relative inline-block">
+                  <div className="w-12 h-12 relative border overflow-hidden rounded-full">
+                    <Image
+                      src={
+                        session.data.user?.image ||
+                        "https://static.vecteezy.com/system/resources/thumbnails/009/292/244/small/default-avatar-icon-of-social-media-user-vector.jpg"
+                      }
+                      fill
+                      alt={session.data.user?.name || "profile Image"}
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    />
+                  </div>
                 </Link>
                 <button
                   className="bg-red-500 rounded-lg p-2 text-lg text-neutral-700 cursor-pointer hover:bg-red-400"
