@@ -20,13 +20,14 @@ const LoginM = () => {
       username,
       password,
     });
+    console.log(res);
 
     if (res?.error) {
       setError("Invalid username or password");
     } else {
       redirect("/");
     }
-    setLoading(false);
+    // setLoading(false);
   };
 
   return (

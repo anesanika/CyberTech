@@ -11,10 +11,8 @@ import Image from "next/image";
 export const Navbar = () => {
   const session = useSession();
 
-  console.log(session);
-
   return (
-    <nav className="w-full p-1 bg-white fixed top-0 left-0">
+    <nav className="w-full p-1 bg-white fixed top-0 left-0 z-[99] shadow-md shadow-amber-300">
       <div className="content">
         <div className="flex justify-between p-2">
           <div className="flex items-center">
@@ -39,7 +37,7 @@ export const Navbar = () => {
 
           <div className="flex gap-3 items-center">
             <Link
-              href={"/"}
+              href={"/cart"}
               title="Cart"
               className="text-2xl rounded-full transition-all hover:bg-neutral-200 p-2"
             >
@@ -55,6 +53,7 @@ export const Navbar = () => {
                         "https://static.vecteezy.com/system/resources/thumbnails/009/292/244/small/default-avatar-icon-of-social-media-user-vector.jpg"
                       }
                       fill
+                      priority
                       alt={session.data.user?.name || "profile Image"}
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     />

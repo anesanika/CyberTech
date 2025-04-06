@@ -102,7 +102,7 @@ export default function Products() {
             </div>
           ) : (
             <div className="flex">
-              <div className="w-1/4 min-w-[100px]: h-screen max-h-[90ch] min-h-[40ch] border border-[#ffc83177] p-5 text-sm bg-white rounded-lg shadow-md">
+              <div className="max-w-[300px] min-w-[100px] h-screen max-h-[90ch] min-h-[40ch] border border-[#ffc83177] p-5 text-sm bg-white rounded-lg shadow-md">
                 <h1 className="font-semibold text-2xl mb-2 text-[#ffc831]">
                   Filters
                 </h1>
