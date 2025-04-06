@@ -4,7 +4,6 @@ import { ProductType } from "@/types/store/ProductType";
 
 export const Productcard = ({
   title,
-  id,
   images,
   price,
   category,
