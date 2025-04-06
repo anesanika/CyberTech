@@ -13,9 +13,9 @@ export const Productcard = ({
   category,
 }: ProductType) => {
   const addToCart = () => {
-    let cart = JSON.parse(localStorage.getItem("cart")!) || [];
+    const cart = JSON.parse(localStorage.getItem("cart")!) || [];
 
-    const existing = cart.find((item: any) => item.id === id);
+    const existing = cart.find((item: ProductType) => item.id === id);
 
     if (existing) {
       existing.quantity += 1;
