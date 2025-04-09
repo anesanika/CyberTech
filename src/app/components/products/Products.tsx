@@ -1,39 +1,45 @@
 "use client";
 import { useEffect, useState } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
-import db from "@/app/req/axios";
 import { Productcard } from "../productcard/Productcard";
 import { ProductType } from "@/types/store/ProductType";
 import Categories from "../categories/Categories";
 
-export default function Products() {
-  const [allProducts, setAllProducts] = useState<ProductType[]>([]);
+interface ProductsProps {
+  allProducts: ProductType[];
+}
+
+export default function Products({ allProducts }: ProductsProps) {
+  // const [allProducts, setAllProducts] = useState<ProductType[]>([]);
   const [filteredProducts, setFilteredProducts] = useState<ProductType[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const param = useSearchParams();
   const router = useRouter();
-
-  // Controlled input state for filter form
   const [sort, setSort] = useState(param.get("sort") || "");
   const [minPrice, setMinPrice] = useState(param.get("min") || "");
   const [maxPrice, setMaxPrice] = useState(param.get("max") || "");
 
-  useEffect(() => {
-    const getProducts = async () => {
-      try {
-        setLoading(true);
-        const { data } = await db.get("/store/products/");
-        setAllProducts(data);
-        setFilteredProducts(data);
-      } catch (error) {
-        console.error("We Got Error", error);
-      } finally {
-        setLoading(false);
-      }
-    };
+  // useEffect(() => {
+  //   const getProducts = async () => {
+  //     try {
+  //       setLoading(true);
+  //       const { data } = await db.get("/store/products/");
+  //       setAllProducts(data);
+  //       setFilteredProducts(data);
+  //     } catch (error) {
+  //       console.error("We Got Error", error);
+  //     } finally {
+  //       setLoading(false);
+  //     }
+  //   };
 
-    getProducts();
-  }, []);
+  //   getProducts();
+  // }, []);
+  useEffect(() => {
+    if (allProducts.length > 0) setLoading(false);
+  }, [allProducts]);
+
+  console.log(allProducts);
 
   useEffect(() => {
     let filtered = [...allProducts];

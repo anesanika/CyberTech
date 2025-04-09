@@ -1,33 +1,10 @@
-// app/aboutproduct/page.tsx or wherever this component lives
 "use client";
 
-// import { useEffect } from "react";
-// import { useSearchParams } from "next/navigation";
-// import db from "@/app/req/axios";
 import { ProductType } from "../../../types/store/ProductType";
 import Image from "next/image";
 import { CiShoppingCart } from "react-icons/ci";
 
 const AboutProduct = ({ product }: { product: ProductType }) => {
-  // const param = useSearchParams();
-  // const [product, setProduct] = useState<ProductType | null>(null);
-
-  // useEffect(() => {
-  //   const productID = param.get("id");
-  //   if (!productID) return;
-
-  //   const getProductDetail = async () => {
-  //     try {
-  //       const { data } = await db.get(`store/products/${productID}/`);
-  //       // setProduct(data);
-  //     } catch (error) {
-  //       console.error("Failed to fetch product:", error);
-  //     }
-  //   };
-
-  //   getProductDetail();
-  // }, [param]);
-
   const addToCart = () => {
     const cart = JSON.parse(localStorage.getItem("cart")!) || [];
 
