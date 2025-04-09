@@ -4,13 +4,13 @@ import { useSearchParams, useRouter } from "next/navigation";
 import { Productcard } from "../productcard/Productcard";
 import { ProductType } from "@/types/store/ProductType";
 import Categories from "../categories/Categories";
+import { AnimatePresence, motion } from "motion/react";
 
 interface ProductsProps {
   allProducts: ProductType[];
 }
 
 export default function Products({ allProducts }: ProductsProps) {
-  // const [allProducts, setAllProducts] = useState<ProductType[]>([]);
   const [filteredProducts, setFilteredProducts] = useState<ProductType[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const param = useSearchParams();
@@ -19,22 +19,6 @@ export default function Products({ allProducts }: ProductsProps) {
   const [minPrice, setMinPrice] = useState(param.get("min") || "");
   const [maxPrice, setMaxPrice] = useState(param.get("max") || "");
 
-  // useEffect(() => {
-  //   const getProducts = async () => {
-  //     try {
-  //       setLoading(true);
-  //       const { data } = await db.get("/store/products/");
-  //       setAllProducts(data);
-  //       setFilteredProducts(data);
-  //     } catch (error) {
-  //       console.error("We Got Error", error);
-  //     } finally {
-  //       setLoading(false);
-  //     }
-  //   };
-
-  //   getProducts();
-  // }, []);
   useEffect(() => {
     if (allProducts.length > 0) setLoading(false);
   }, [allProducts]);
@@ -153,9 +137,20 @@ export default function Products({ allProducts }: ProductsProps) {
               </div>
 
               <div className="flex flex-wrap gap-4 mt-2 justify-center ml-6">
-                {filteredProducts.map((prod: ProductType) => (
-                  <Productcard {...prod} key={prod.id} />
-                ))}
+                <AnimatePresence>
+                  {filteredProducts.map((prod: ProductType) => (
+                    <motion.div
+                      layout
+                      key={prod.id}
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <Productcard {...prod} />
+                    </motion.div>
+                  ))}
+                </AnimatePresence>
               </div>
             </div>
           )}
