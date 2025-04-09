@@ -39,8 +39,6 @@ export default function Products({ allProducts }: ProductsProps) {
     if (allProducts.length > 0) setLoading(false);
   }, [allProducts]);
 
-  console.log(allProducts);
-
   useEffect(() => {
     let filtered = [...allProducts];
 

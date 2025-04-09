@@ -16,3 +16,7 @@ export interface ProductType {
   category: string;
   images: ImageType[];
 }
+
+export interface Props {
+  searchParams: Promise<{ id?: string }>;
+}
