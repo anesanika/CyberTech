@@ -15,7 +15,7 @@ export default async function Productdetail({ searchParams }: Props) {
   const { data } = await db.get(`store/products/${id}/`);
 
   return (
-    <div className="mt-50">
+    <div className="mt-20">
       <Aboutproduct product={data} />
     </div>
   );

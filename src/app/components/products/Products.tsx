@@ -63,7 +63,7 @@ export default function Products({ allProducts }: ProductsProps) {
   };
 
   return (
-    <section className="p-6">
+    <section className="p-4 sm:p-6">
       <div className="content">
         <Categories />
         <div className="mt-10">
@@ -71,7 +71,7 @@ export default function Products({ allProducts }: ProductsProps) {
             <div className="flex flex-wrap gap-4 justify-center">
               {[...Array(3)].map((_, index) => (
                 <div
-                  className="w-[330px] py-2 bg-white border flex flex-col items-center border-gray-200 rounded-lg shadow-md overflow-hidden animate-pulse"
+                  className="w-full sm:w-[330px] py-2 bg-white border flex flex-col items-center border-gray-200 rounded-lg shadow-md overflow-hidden animate-pulse"
                   key={index}
                 >
                   <div className="relative w-1/2 h-[200px] bg-gray-200 rounded-md"></div>
@@ -89,8 +89,9 @@ export default function Products({ allProducts }: ProductsProps) {
               ))}
             </div>
           ) : (
-            <div className="flex">
-              <div className="max-w-[300px] min-w-[100px] h-screen max-h-[90ch] min-h-[40ch] border border-[#ffc83177] p-5 text-sm bg-white rounded-lg shadow-md">
+            <div className="flex flex-col lg:flex-row">
+              {/* Filter Sidebar */}
+              <div className="w-full lg:max-w-[300px] lg:min-w-[220px] mb-6 lg:mb-0 h-auto lg:h-screen max-h-[90ch] min-h-[40ch] border border-[#ffc83177] p-4 sm:p-5 text-sm bg-white rounded-lg shadow-md">
                 <h1 className="font-semibold text-2xl mb-2 text-[#ffc831]">
                   Filters
                 </h1>
@@ -136,7 +137,8 @@ export default function Products({ allProducts }: ProductsProps) {
                 </button>
               </div>
 
-              <div className="flex flex-wrap gap-4 mt-2 justify-center ml-6">
+              {/* Products Grid */}
+              <div className="flex flex-wrap gap-4 justify-center lg:justify-start ml-0 lg:ml-6">
                 <AnimatePresence>
                   {filteredProducts.map((prod: ProductType) => (
                     <motion.div

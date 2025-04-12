@@ -28,14 +28,16 @@ const AboutProduct = ({ product }: { product: ProductType }) => {
   }
 
   return (
-    <main className="content">
-      <div className="flex flex-col lg:flex-row">
-        <div className="w-[60%] mb-6 lg:mb-0">
-          <div className="flex p-5">
-            <div className="h-full border border-gray-300 rounded-lg shadow-md">
+    <main className="content px-2 sm:px-4">
+      <div className="flex flex-col lg:flex-row gap-6">
+        {/* Images Section */}
+        <div className="w-full lg:w-[60%]">
+          <div className="flex flex-col sm:flex-row gap-4 p-2 sm:p-5">
+            {/* Thumbnail images */}
+            <div className="flex sm:flex-col overflow-x-auto sm:overflow-visible border border-gray-300 rounded-lg shadow-md">
               {product.images.map((img, index) => (
                 <div
-                  className="border-b border-gray-200 p-2 cursor-pointer transition transform hover:scale-105"
+                  className="min-w-[5rem] sm:min-w-0 border-b sm:border-b-0 sm:border-b-gray-200 p-2 cursor-pointer transition-transform hover:scale-105"
                   key={img.id}
                   onClick={() => setImageIndex(index)}
                 >
@@ -50,8 +52,10 @@ const AboutProduct = ({ product }: { product: ProductType }) => {
                 </div>
               ))}
             </div>
-            <div className="border border-gray-300 ml-1 rounded-md w-full p-3">
-              <div className="relative w-full h-[55ch] rounded-lg overflow-hidden">
+
+            {/* Main Image */}
+            <div className="border border-gray-300 rounded-md w-full p-3">
+              <div className="relative w-full h-[300px] sm:h-[400px] lg:h-[55ch] rounded-lg overflow-hidden">
                 <Image
                   src={product.images[imageIndx].image}
                   fill
@@ -64,29 +68,33 @@ const AboutProduct = ({ product }: { product: ProductType }) => {
           </div>
         </div>
 
-        <div className="w-[40%] px-4">
+        {/* Product Info Section */}
+        <div className="w-full lg:w-[40%] px-2 sm:px-4">
           <div>
-            <h1 className="text-4xl font-semibold text-gray-800 text-center mb-4  transition duration-300">
+            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-semibold text-gray-800 text-center mb-4 transition duration-300">
               {product.title}
             </h1>
-            <p className="text-gray-600 text-lg mb-4">{product.descriptions}</p>
+            <p className="text-gray-600 text-base sm:text-lg mb-4">
+              {product.descriptions}
+            </p>
           </div>
 
-          <div className="flex justify-between items-center mb-6">
+          <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-6 gap-2">
             <Link
               href={`/?category=${product.category}`}
-              className="bg-gray-300 px-4 py-2 rounded-full text-gray-900 hover:bg-gray-400 transition duration-75"
+              className="bg-gray-300 px-4 py-2 rounded-full text-gray-900 hover:bg-gray-400 transition duration-75 w-fit"
             >
               {product.category}
             </Link>
-            <h1 className="text-4xl font-semibold text-green-700 italic text-end">
+            <h1 className="text-3xl sm:text-4xl font-semibold text-green-700 italic text-end">
               {product.price}$
             </h1>
           </div>
 
           <div onClick={addToCart} className="w-full flex justify-center mb-4">
-            <button className="w-full text-2xl bg-amber-400 hover:bg-amber-300 flex justify-center py-2 rounded-md text-white transition duration-100 cursor-pointer shadow-lg transform ">
+            <button className="w-full text-xl sm:text-2xl bg-amber-400 hover:bg-amber-300 flex justify-center py-2 rounded-md text-white transition duration-100 cursor-pointer shadow-lg">
               <CiShoppingCart className="mr-2" />
+              Add to Cart
             </button>
           </div>
         </div>

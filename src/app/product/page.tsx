@@ -1,3 +1,7 @@
+import { redirect } from "next/navigation";
+
 export default function Product() {
-  return <>rodcutPage</>;
+  redirect("/");
+
+  return <h1>...loading</h1>;
 }

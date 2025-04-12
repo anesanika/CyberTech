@@ -6,7 +6,7 @@ export default async function Home() {
   const { data } = await db.get(`store/products/`);
 
   return (
-    <Suspense fallback={<h1>...loading</h1>}>
+    <Suspense fallback={<h1 className="text-center">...loading</h1>}>
       <Prodcuts allProducts={data} />
     </Suspense>
   );

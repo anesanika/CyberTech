@@ -58,7 +58,9 @@ export const Productcard = ({
 
         <div className="mt-auto">
           <div className="flex justify-between items-center mt-4">
-            <span className="text-lg font-bold text-[#ffc831]">${price}</span>
+            <span className="text-lg font-bold text-green-500 font-mono">
+              ${price}
+            </span>
           </div>
 
           <button
