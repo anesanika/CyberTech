@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import { Navbar } from "./components/navbar/Navbar";
+import NavbarWrapper from "./components/navbar/NavbarWrapper";
 import "./globals.css";
 import AuthProvider from "./context/AuthProvider";
 import { Breadcrumbs } from "./components/breadcruds/Breadcrumbs";
@@ -31,7 +31,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <AuthProvider>
-          <Navbar />
+          <NavbarWrapper />
         </AuthProvider>
         <Breadcrumbs />
         <div className="max-[768]:mt-10">{children}</div>

@@ -30,10 +30,8 @@ const AboutProduct = ({ product }: { product: ProductType }) => {
   return (
     <main className="content px-2 sm:px-4">
       <div className="flex flex-col lg:flex-row gap-6">
-        {/* Images Section */}
         <div className="w-full lg:w-[60%]">
           <div className="flex flex-col sm:flex-row gap-4 p-2 sm:p-5">
-            {/* Thumbnail images */}
             <div className="flex sm:flex-col overflow-x-auto sm:overflow-visible border border-gray-300 rounded-lg shadow-md">
               {product.images.map((img, index) => (
                 <div
@@ -68,7 +66,6 @@ const AboutProduct = ({ product }: { product: ProductType }) => {
           </div>
         </div>
 
-        {/* Product Info Section */}
         <div className="w-full lg:w-[40%] px-2 sm:px-4">
           <div>
             <h1 className="text-2xl sm:text-3xl lg:text-4xl font-semibold text-gray-800 text-center mb-4 transition duration-300">

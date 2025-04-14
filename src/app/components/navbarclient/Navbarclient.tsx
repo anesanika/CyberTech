@@ -1,32 +1,26 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useState, useMemo } from "react";
 import Link from "next/link";
 import { CiSearch, CiShoppingCart, CiUser, CiLogout } from "react-icons/ci";
 import { IoIosFlash } from "react-icons/io";
-import { useSession } from "next-auth/react";
-import { signOut } from "next-auth/react";
+import { useSession, signOut } from "next-auth/react";
 import Image from "next/image";
-import db from "@/app/req/axios";
 import { ProductType } from "@/types/store/ProductType";
 
-export const Navbar = () => {
+type Props = {
+  products: ProductType[];
+};
+
+export const Navbarclient = ({ products }: Props) => {
   const session = useSession();
   const [searchValue, setSearchValue] = useState<string>("");
-  const [searchProduct, setSearchProduct] = useState<ProductType[]>([]);
 
-  useEffect(() => {
-    const getProduct = async () => {
-      const { data } = await db.get("/store/products/");
-
-      const searched = data.filter((product: ProductType) =>
-        product.title.toLowerCase().includes(searchValue.toLowerCase())
-      );
-      // setSearchProduct(data);
-      setSearchProduct(searched);
-    };
-    getProduct();
-  }, [searchValue]);
+  const searchProduct = useMemo(() => {
+    return products.filter((product) =>
+      product.title.toLowerCase().includes(searchValue.toLowerCase())
+    );
+  }, [searchValue, products]);
 
   return (
     <nav className="w-full p-1 bg-white fixed top-0 left-0 z-[99] shadow-md shadow-amber-300">
@@ -40,10 +34,15 @@ export const Navbar = () => {
                 className="inline-flex my-3 border border-gray-300 rounded-md p-1"
                 key={item.id}
               >
-                <div className="flex items-center w-full justify-between">
+                <div className="flex items-center w-full justify-between px-2">
                   <div className="flex items-center gap-4">
                     <div className="relative w-10 h-10">
-                      <Image src={item.images[0].image} alt={item.title} fill />
+                      <Image
+                        src={item.images[0].image}
+                        alt={item.title}
+                        fill
+                        className="object-contain"
+                      />
                     </div>
                     <h2 className="text-sm md:text-base">{item.title}</h2>
                   </div>
