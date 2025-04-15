@@ -9,7 +9,7 @@ interface HomeProps {
 export default async function Home({ searchParams }: HomeProps) {
   const { page } = await searchParams;
 
-  const { data } = await db.get(`store/products/?page=${page || "1"}`);
+  const { data } = await db.get(`store/products/?page=${page || 1}`);
 
   return (
     <Suspense fallback={<h1 className="text-center">...loading</h1>}>

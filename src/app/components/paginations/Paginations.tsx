@@ -30,8 +30,7 @@ export default function Pagination({
         pages.push(i);
       }
     } else {
-      pages.push(1); // Always show first
-
+      pages.push(1);
       if (currentPage > 4) {
         pages.push("...");
       }
@@ -47,7 +46,7 @@ export default function Pagination({
         pages.push("...");
       }
 
-      pages.push(totalPages); // Always show last
+      pages.push(totalPages);
     }
 
     return pages;

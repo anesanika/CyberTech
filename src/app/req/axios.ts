@@ -6,7 +6,8 @@ const db = axios.create({
   baseURL,
   headers: {
     "Content-Type": "application/json",
-    "x-frontend-secret": process.env.NEXT_PUBLIC_FRONTEND_SECRET || "",
+    "x-frontend-secret":
+      process.env.NEXT_PUBLIC_FRONTEND_SECRET || "BZG3AyaFU7",
   },
 });
 
