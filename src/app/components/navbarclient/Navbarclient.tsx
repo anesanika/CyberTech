@@ -55,7 +55,7 @@ export const Navbarclient = ({ products }: Props) => {
 
         <div className="flex flex-col md:flex-row md:justify-between md:items-center p-2 gap-2">
           {/* Logo + Search */}
-          <div className="flex flex-col md:flex-row items-start md:items-center gap-2">
+          <div className="flex  md:flex-row items-start md:items-center gap-2">
             <Link
               title="CyberHub"
               href={"/"}
