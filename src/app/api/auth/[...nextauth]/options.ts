@@ -12,8 +12,6 @@ export const options: NextAuthOptions = {
         password: { label: "pass", type: "password" },
       },
       async authorize(credentials) {
-        console.log(credentials?.username, credentials?.password);
-
         try {
           const { data } = await db.post("/api/token/", {
             username: credentials?.username,
