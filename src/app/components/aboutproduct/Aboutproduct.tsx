@@ -28,22 +28,24 @@ const AboutProduct = ({ product }: { product: ProductType }) => {
   }
 
   return (
-    <main className="content px-2 sm:px-4">
-      <div className="flex flex-col lg:flex-row gap-6">
-        <div className="w-full lg:w-[60%]">
-          <div className="flex flex-col sm:flex-row gap-4 p-2 sm:p-5">
-            <div className="flex sm:flex-col overflow-x-auto sm:overflow-visible border border-gray-300 rounded-lg shadow-md">
+    <main className="content px-4 sm:px-6 lg:px-8 py-8">
+      <div className="flex flex-col lg:flex-row gap-10">
+        <div className="w-full lg:w-2/3">
+          <div className="flex flex-col-reverse sm:flex-row gap-6">
+            <div className="flex sm:flex-col overflow-x-auto sm:overflow-visible gap-3 sm:gap-4 border border-gray-200 rounded-xl shadow-sm p-3 bg-white">
               {product.images.map((img, index) => (
                 <div
-                  className="min-w-[5rem] sm:min-w-0 border-b sm:border-b-0 sm:border-b-gray-200 p-2 cursor-pointer transition-transform hover:scale-105"
                   key={img.id}
                   onClick={() => setImageIndex(index)}
+                  className={`min-w-[4rem] sm:min-w-0 border p-1 rounded-md cursor-pointer transition-transform duration-150 hover:scale-105 ${
+                    index === imageIndx ? "ring-2 ring-amber-400" : ""
+                  }`}
                 >
-                  <div className="relative w-20 h-20 rounded-lg overflow-hidden">
+                  <div className="relative w-16 h-16 sm:w-20 sm:h-20 rounded-md overflow-hidden">
                     <Image
                       src={img.image}
                       fill
-                      alt={`${img.id}-image`}
+                      alt={`Thumbnail-${img.id}`}
                       className="object-contain pointer-events-none select-none"
                     />
                   </div>
@@ -51,14 +53,13 @@ const AboutProduct = ({ product }: { product: ProductType }) => {
               ))}
             </div>
 
-            {/* Main Image */}
-            <div className="border border-gray-300 rounded-md w-full p-3">
-              <div className="relative w-full h-[300px] sm:h-[400px] lg:h-[55ch] rounded-lg overflow-hidden">
+            <div className="flex-1 border border-gray-200 rounded-xl bg-white p-4 shadow-sm">
+              <div className="relative w-full h-[300px] sm:h-[400px] lg:h-[500px] rounded-lg overflow-hidden">
                 <Image
                   src={product.images[imageIndx].image}
                   fill
                   priority
-                  alt={`${product.title}-image`}
+                  alt={`${product.title}-main-image`}
                   className="object-contain"
                 />
               </div>
@@ -66,31 +67,33 @@ const AboutProduct = ({ product }: { product: ProductType }) => {
           </div>
         </div>
 
-        <div className="w-full lg:w-[40%] px-2 sm:px-4">
+        {/* Product Info Section */}
+        <div className="w-full lg:w-1/3 px-2 sm:px-4">
           <div>
-            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-semibold text-gray-800 text-center mb-4 transition duration-300">
+            <h1 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4 text-center lg:text-left">
               {product.title}
             </h1>
-            <p className="text-gray-600 text-base sm:text-lg mb-4">
+            <p className="text-gray-600 text-base sm:text-lg mb-6 leading-relaxed">
               {product.descriptions}
             </p>
           </div>
 
-          <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-6 gap-2">
+          {/* Category and Price */}
+          <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-6 gap-3">
             <Link
               href={`/?category=${product.category}`}
-              className="bg-gray-300 px-4 py-2 rounded-full text-gray-900 hover:bg-gray-400 transition duration-75 w-fit"
+              className="bg-gray-100 hover:bg-gray-200 text-sm sm:text-base px-4 py-2 rounded-full text-gray-800 transition-colors duration-200 w-fit"
             >
               {product.category}
             </Link>
-            <h1 className="text-3xl sm:text-4xl font-semibold text-green-700 italic text-end">
-              {product.price}$
-            </h1>
+            <h2 className="text-2xl sm:text-3xl font-semibold text-green-600 italic text-end">
+              ${product.price}
+            </h2>
           </div>
 
-          <div onClick={addToCart} className="w-full flex justify-center mb-4">
-            <button className="w-full text-xl sm:text-2xl bg-amber-400 hover:bg-amber-300 flex justify-center py-2 rounded-md text-white transition duration-100 cursor-pointer shadow-lg">
-              <CiShoppingCart className="mr-2" />
+          <div onClick={addToCart} className="w-full">
+            <button className="w-full text-lg sm:text-xl bg-amber-400 hover:bg-amber-400 text-white flex items-center justify-center gap-2 py-2 rounded-lg shadow-md transition-all duration-150 font-[ubuntu]">
+              <CiShoppingCart size={24} />
               Add to Cart
             </button>
           </div>
